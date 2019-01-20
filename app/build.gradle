@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "zokov.andrii.me.viewlift"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "com.android.support:support-v4:$android_library_v"
+    implementation "com.android.support:appcompat-v7:$android_library_v"
+    implementation "com.android.support:design:$android_library_v"
+    implementation "com.android.support:exifinterface:$android_library_v"
+
+    testImplementation 'org.hamcrest:hamcrest-library:1.3'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.23.4'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+
+    // rx kotlin
+    implementation "io.reactivex.rxjava2:rxkotlin:2.2.0"
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+
+    // dagger
+    implementation "com.google.dagger:dagger:$dagger_v"
+    implementation "com.google.dagger:dagger-android:$dagger_v"
+    implementation "com.google.dagger:dagger-android-support:$dagger_v"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_v"
+    kapt "com.google.dagger:dagger-compiler:$dagger_v"
+    implementation 'javax.annotation:jsr250-api:1.0'
+    implementation 'javax.inject:javax.inject:1'
+
+    // anko
+    implementation "org.jetbrains.anko:anko-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-sdk25:$anko_version"
+    implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+    implementation "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+    implementation "org.jetbrains.anko:anko-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-cardview-v7:$anko_version"
+    implementation "org.jetbrains.anko:anko-design:$anko_version"
+    implementation "org.jetbrains.anko:anko-design-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-gridlayout-v7:$anko_version"
+    implementation "org.jetbrains.anko:anko-percent:$anko_version"
+    implementation "org.jetbrains.anko:anko-recyclerview-v7:$anko_version"
+    implementation "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-support-v4-commons:$anko_version"
+    implementation "org.jetbrains.anko:anko-support-v4:$anko_version"
+    implementation "org.jetbrains.anko:anko-constraint-layout:$anko_version"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+
+    // xml
+    implementation 'com.tickaroo.tikxml:annotation:0.8.13'
+    implementation 'com.tickaroo.tikxml:core:0.8.13'
+    kapt 'com.tickaroo.tikxml:processor:0.8.13'
+    //noinspection GradleDependency
+    implementation 'com.tickaroo.tikxml:retrofit-converter:0.8.13'
+
+    // okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+
+    // square picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+}

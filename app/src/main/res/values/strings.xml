@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ViewLift</string>
+    <string name="server_api_url">http://sample-firetv-web-app.s3-website-us-west-2.amazonaws.com/
+    </string>
+    <string name="title">Title:</string>
+    <string name="duration">Duration:</string>
+    <string name="no_videos_found">No videos found!!</string>
+    <string name="server_error">Server Error</string>
+    <string name="video_is_not_available">Video is not available</string>
+    <string name="default_video_player_not_available">Default video player is not availalbe</string>
+</resources>
