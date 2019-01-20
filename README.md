@@ -4,8 +4,8 @@ Parse the xml and create a tray of videos (thumbnail, title and duration display
 When the user clicks the thumbnail, use the default player and play the video. Use any libraries you like.
 
 ```
-http://sample-firetv-web-app.s3-website-us-west-2.amazonaws.com/feed_firetv.xml
+url:http://sample-firetv-web-app.s3-website-us-west-2.amazonaws.com/feed_firetv.xml
 ```
 
-### from Andrii:
+#### from Andrii:
 I don't really understand if "tray of videos" has a specific meaning, so I made it as a vertical list like "youtube"
