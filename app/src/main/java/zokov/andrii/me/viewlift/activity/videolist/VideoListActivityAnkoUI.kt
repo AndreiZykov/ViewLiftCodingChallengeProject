@@ -1,6 +1,7 @@
 package zokov.andrii.me.viewlift.activity.videolist
 
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import com.leochuan.ScaleLayoutManager
 import org.jetbrains.anko.*
@@ -16,9 +17,11 @@ class LoginActivityAnkoUI(private val videoListAdapter: VideoListAdapter) : Anko
         private const val NO_VIDEO_FOUND_DESCRIPTION_BOTTOM_MARGIN = 32
         private const val SCALE_LAYOUT_MANAGER_MIN_SCALE = 0.9F
         private const val SCALE_LAYOUT_MANAGER_ITEM_SPACING = 0
+        private const val PROGRESS_BAR_WIDTH_HEIGHT = 72
     }
 
     private lateinit var noVideosFoundLayout: RelativeLayout
+    private lateinit var progressBar: ProgressBar
     override fun createView(ui: AnkoContext<VideoListActivity>) = ui.apply {
         relativeLayout {
             backgroundResource = R.color.video_list_screen_background
@@ -27,6 +30,8 @@ class LoginActivityAnkoUI(private val videoListAdapter: VideoListAdapter) : Anko
                     .setMinScale(SCALE_LAYOUT_MANAGER_MIN_SCALE).build()
                 adapter = videoListAdapter
             }.lparams(matchParent, matchParent)
+            progressBar = progressBar { visibility = View.INVISIBLE }
+                .lparams(dip(PROGRESS_BAR_WIDTH_HEIGHT), dip(PROGRESS_BAR_WIDTH_HEIGHT)) { centerInParent() }
             noVideosFoundLayout = relativeLayout {
                 visibility = View.INVISIBLE
                 imageView { imageResource = R.drawable.ic_sad_face }
@@ -46,6 +51,10 @@ class LoginActivityAnkoUI(private val videoListAdapter: VideoListAdapter) : Anko
 
     internal fun showNoVideosFoundView(show: Boolean) {
         noVideosFoundLayout.visibility = if (show) View.VISIBLE else View.INVISIBLE
+    }
+
+    internal fun showProgressBar(show: Boolean) {
+        progressBar.visibility = if (show) View.VISIBLE else View.INVISIBLE
     }
 
 }

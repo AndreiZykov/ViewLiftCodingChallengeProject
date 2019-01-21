@@ -71,7 +71,11 @@ class VideoListPresenter @Inject constructor(
                 }
             }
             .subscribeOn(Schedulers.single()).observeOn(AndroidSchedulers.mainThread())
-            .doFinally { view.showNoVideoItemsFound(videoItems.isEmpty()) }
+            .doOnSubscribe { view.showProgressBar(true) }
+            .doFinally {
+                view.showNoVideoItemsFound(videoItems.isEmpty())
+                view.showProgressBar(false)
+            }
             .subscribe({ view.showVideoItems(videoItems) }) { view.showServerError() }
             .apply { compositeDisposable.add(this) }
     }

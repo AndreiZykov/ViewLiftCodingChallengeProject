@@ -19,6 +19,8 @@ interface VideoListActivityContract {
         fun showVideoIsNotAvailable()
         @UiThread
         fun defaultVideoPlayerNotAvailable()
+        @UiThread
+        fun showProgressBar(show: Boolean)
     }
 
     interface Presenter : IBasePresenter {

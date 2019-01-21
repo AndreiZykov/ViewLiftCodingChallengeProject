@@ -79,6 +79,11 @@ class VideoListActivity : AppCompatActivity(), VideoListActivityContract.View {
         ui.showNoVideosFoundView(show)
     }
 
+    @UiThread
+    override fun showProgressBar(show: Boolean) {
+        ui.showProgressBar(show)
+    }
+
     override fun onResume() {
         super.onResume()
         presenter.subscribe()

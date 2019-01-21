@@ -20,6 +20,7 @@ import zokov.andrii.me.viewlift.model.VideoItemWrapper
 import java.util.concurrent.TimeUnit
 import org.mockito.Mockito.`when` as whenever
 
+
 @RunWith(MockitoJUnitRunner::class)
 class VideoListPresenterTest {
 
@@ -128,6 +129,20 @@ class VideoListPresenterTest {
         // then
         verify(view, times(1)).showServerError()
     }
+
+    @Test
+    fun fetchContentItems_shouldShowAndThenHideProgressBar() {
+        // before
+        whenever(applicationRemoteDataSource.fetchContentItems())
+            .thenReturn(Single.error(Exception(NON_EMPTY_STRING)))
+        // when
+        videoListPresenter.fetchContentItems()
+        // then
+        val inOrder = inOrder(view, view)
+        inOrder.verify(view).showProgressBar(true)
+        inOrder.verify(view).showProgressBar(false)
+    }
+
 
     @Test
     fun itemSelected_5VideoItemsStored_itemIdShouldMatch() {

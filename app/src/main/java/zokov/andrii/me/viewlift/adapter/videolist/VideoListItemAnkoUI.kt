@@ -43,9 +43,7 @@ class VideoListItemAnkoUI : AnkoComponent<ViewGroup> {
                             textColorResource = R.color.video_list_item_title_color
                             ellipsize = TextUtils.TruncateAt.END
                             setTextSize(TypedValue.COMPLEX_UNIT_DIP, TITLE_TEXT_SIZE)
-                        }.lparams(wrapContent, wrapContent) {
-                            centerHorizontally()
-                        }
+                        }.lparams(wrapContent, wrapContent) { centerHorizontally() }
                         durationValue = textView {}.lparams {
                             below(titleValue)
                             centerHorizontally()

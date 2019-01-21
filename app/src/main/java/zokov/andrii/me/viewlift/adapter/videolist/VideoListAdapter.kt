@@ -32,12 +32,13 @@ class VideoListAdapter @Inject constructor() : RecyclerView.Adapter<VideoListIte
         holder.ui.apply {
             items[position].let { info ->
                 titleValue.text = info.title
-                durationValue.text = String.format(Locale.getDefault(), "%.1f s",info.duration)
+                durationValue.text = String.format(Locale.getDefault(), "%.1f s", info.duration)
                 RxView.clicks(thumbnailImageView).throttleFirst(THUMBNAIL_CLICK_THROTTLE, TimeUnit.MILLISECONDS)
                     .subscribe {
                         itemClickConsumer?.let { consumer -> Observable.just(info.id!!).subscribe(consumer) }
                     }
-                Picasso.get().load(info.thumbnailUrl).into(thumbnailImageView)
+                Picasso.get().load(info.thumbnailUrl).fit()
+                    .centerCrop().into(thumbnailImageView)
             }
         }
     }
