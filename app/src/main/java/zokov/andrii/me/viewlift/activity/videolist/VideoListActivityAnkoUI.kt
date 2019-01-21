@@ -9,7 +9,7 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 import zokov.andrii.me.viewlift.R
 import zokov.andrii.me.viewlift.adapter.videolist.VideoListAdapter
 
-class LoginActivityAnkoUI(private val videoListAdapter: VideoListAdapter) : AnkoComponent<VideoListActivity> {
+class VideoListActivityAnkoUI(private val videoListAdapter: VideoListAdapter) : AnkoComponent<VideoListActivity> {
     companion object {
         private const val NO_VIDEO_FOUND_LAYOUT_WIDTH = 120
         private const val NO_VIDEO_FOUND_LAYOUT_HEIGHT = 140

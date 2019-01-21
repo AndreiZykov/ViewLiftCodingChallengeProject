@@ -23,13 +23,13 @@ class VideoListActivity : AppCompatActivity(), VideoListActivityContract.View {
     @Inject
     internal lateinit var videoListAdapter: VideoListAdapter
 
-    private lateinit var ui: LoginActivityAnkoUI
+    private lateinit var ui: VideoListActivityAnkoUI
 
     override fun onCreate(args: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(args)
         videoListAdapter.itemClickConsumer = Consumer { presenter.itemSelected(it) }
-        ui = LoginActivityAnkoUI(videoListAdapter)
+        ui = VideoListActivityAnkoUI(videoListAdapter)
             .apply { setContentView(this@VideoListActivity) }
     }
 
