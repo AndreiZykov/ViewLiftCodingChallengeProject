@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="video_list_item_title_color">#000000</color>
-    <color name="image_placeholder_background_color">#fff5f5f5</color>
+    <color name="image_placeholder_background_color">#d1d0d0</color>
+    <color name="video_list_screen_background">#fff5f5f5</color>
+    <color name="transparent">#00ffffff</color>
 </resources>

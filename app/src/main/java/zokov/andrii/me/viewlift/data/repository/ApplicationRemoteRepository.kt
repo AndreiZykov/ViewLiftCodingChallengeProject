@@ -7,7 +7,7 @@ import zokov.andrii.me.viewlift.network.ServerApi
 
 class ApplicationRemoteRepository constructor(private val serverApi: ServerApi) : ApplicationRemoteDataSource {
     override fun fetchContentItems(): Single<List<VideoItemWrapper>> {
-        return serverApi.fetchRss().map { it.chanel?.items ?: ArrayList() }.map { items ->
+        return serverApi.fetchRss().map { it.channel?.items ?: ArrayList() }.map { items ->
             items.map { VideoItemWrapper.of(it) } }
     }
 }

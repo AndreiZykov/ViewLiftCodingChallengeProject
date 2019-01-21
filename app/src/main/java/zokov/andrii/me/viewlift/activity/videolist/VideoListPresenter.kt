@@ -34,8 +34,6 @@ class VideoListPresenter @Inject constructor(
             fetchContentItems()
     }
 
-    override fun refreshVideoItems() = fetchContentItems()
-
     override fun itemSelected(id: Long) {
         Observable.fromCallable { videoItems.find { it.id == id } }
             .subscribeOn(Schedulers.single()).observeOn(Schedulers.computation())
@@ -73,10 +71,7 @@ class VideoListPresenter @Inject constructor(
                 }
             }
             .subscribeOn(Schedulers.single()).observeOn(AndroidSchedulers.mainThread())
-            .doFinally {
-                view.hideRefreshProgress()
-                view.showNoVideoItemsFound(videoItems.isEmpty())
-            }
+            .doFinally { view.showNoVideoItemsFound(videoItems.isEmpty()) }
             .subscribe({ view.showVideoItems(videoItems) }) { view.showServerError() }
             .apply { compositeDisposable.add(this) }
     }

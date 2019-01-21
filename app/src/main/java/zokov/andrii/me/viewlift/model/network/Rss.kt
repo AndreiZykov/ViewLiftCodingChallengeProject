@@ -6,6 +6,6 @@ import com.tickaroo.tikxml.annotation.Xml
 @Xml(name = "rss")
 class Rss {
     @Element(name = "channel")
-    var chanel: Channel? = null
+    var channel: Channel? = null
 }
 

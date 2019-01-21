@@ -5,19 +5,19 @@ import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
 import org.jetbrains.anko.*
+import org.jetbrains.anko.cardview.v7.cardView
 import zokov.andrii.me.viewlift.R
 
 class VideoListItemAnkoUI : AnkoComponent<ViewGroup> {
     companion object {
-        private const val ROOT_LAYOUT_PADDING = 10
-        private const val ROOT_LAYOUT_HEIGHT = 110
-        private const val THUMBNAIL_ICON_WIDTH = 162
-        private const val THUMBNAIL_ICON_HEIGHT = 92
-        private const val THUMBNAIL_ICON_MARGING_END = 10
-        private const val TITLE_TEXT_SIZE = 17F
+        private const val ROOT_LAYOUT_HORIZONTAL_PADDING = 6
+        private const val THUMBNAIL_ICON_HEIGHT = 216
+        private const val INFO_CONTAINER_TOP_MARGIN = 12
+        private const val INFO_CONTAINER_BOTTOM_MARGIN = 8
+        private const val TITLE_TEXT_SIZE = 19F
+        private const val DURATION_TOP_MARGIN = 6
     }
 
     internal lateinit var thumbnailImageView: ImageView
@@ -25,25 +25,39 @@ class VideoListItemAnkoUI : AnkoComponent<ViewGroup> {
     internal lateinit var durationValue: TextView
     override fun createView(ui: AnkoContext<ViewGroup>): View = with(ui) {
         relativeLayout {
-            lparams(matchParent, dip(ROOT_LAYOUT_HEIGHT))
-            padding = dip(ROOT_LAYOUT_PADDING)
-            thumbnailImageView = imageView {
-                id = View.generateViewId()
-                backgroundResource = R.color.image_placeholder_background_color
-            }.lparams(dip(THUMBNAIL_ICON_WIDTH), dip(THUMBNAIL_ICON_HEIGHT)) {
-                alignParentStart()
-                marginEnd = dip(THUMBNAIL_ICON_MARGING_END)
-            }
-            relativeLayout {
-                titleValue = textView {
-                    id = View.generateViewId()
-                    includeFontPadding = false
-                    setTextSize(TypedValue.COMPLEX_UNIT_DIP, TITLE_TEXT_SIZE)
-                    textColorResource = R.color.video_list_item_title_color
-                    ellipsize = TextUtils.TruncateAt.END
+            backgroundResource = R.color.transparent
+            lparams(matchParent, wrapContent)
+            horizontalPadding = dip(ROOT_LAYOUT_HORIZONTAL_PADDING)
+            cardView {
+                relativeLayout {
+                    thumbnailImageView = imageView {
+                        id = View.generateViewId()
+                        backgroundResource = R.color.image_placeholder_background_color
+                    }.lparams(matchParent, dip(THUMBNAIL_ICON_HEIGHT)) {
+                        alignParentTop()
+                        centerHorizontally()
+                    }
+                    relativeLayout {
+                        titleValue = textView {
+                            id = View.generateViewId()
+                            textColorResource = R.color.video_list_item_title_color
+                            ellipsize = TextUtils.TruncateAt.END
+                            setTextSize(TypedValue.COMPLEX_UNIT_DIP, TITLE_TEXT_SIZE)
+                        }.lparams(wrapContent, wrapContent) {
+                            centerHorizontally()
+                        }
+                        durationValue = textView {}.lparams {
+                            below(titleValue)
+                            centerHorizontally()
+                            topMargin = dip(DURATION_TOP_MARGIN)
+                        }
+                    }.lparams(matchParent, wrapContent) {
+                        below(thumbnailImageView)
+                        topMargin = dip(INFO_CONTAINER_TOP_MARGIN)
+                        bottomMargin = dip(INFO_CONTAINER_BOTTOM_MARGIN)
+                    }
                 }.lparams(matchParent, wrapContent)
-                durationValue = textView { includeFontPadding = false }.lparams { below(titleValue) }
-            }.lparams(matchParent, wrapContent) { endOf(thumbnailImageView) }
+            }.lparams(matchParent, wrapContent)
         }
     }
 }

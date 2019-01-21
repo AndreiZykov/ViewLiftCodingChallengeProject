@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ViewLift</string>
+    <string name="app_name">ViewLift AZ Coding Challenge</string>
     <string name="server_api_url">http://sample-firetv-web-app.s3-website-us-west-2.amazonaws.com/
     </string>
     <string name="title">Title:</string>

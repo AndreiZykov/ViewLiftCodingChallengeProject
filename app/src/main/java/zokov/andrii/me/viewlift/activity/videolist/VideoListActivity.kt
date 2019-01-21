@@ -29,7 +29,7 @@ class VideoListActivity : AppCompatActivity(), VideoListActivityContract.View {
         AndroidInjection.inject(this)
         super.onCreate(args)
         videoListAdapter.itemClickConsumer = Consumer { presenter.itemSelected(it) }
-        ui = LoginActivityAnkoUI(videoListAdapter, Consumer { presenter.refreshVideoItems() })
+        ui = LoginActivityAnkoUI(videoListAdapter)
             .apply { setContentView(this@VideoListActivity) }
     }
 
@@ -72,11 +72,6 @@ class VideoListActivity : AppCompatActivity(), VideoListActivityContract.View {
     @UiThread
     override fun showServerError() {
         Toast.makeText(this, R.string.server_error, Toast.LENGTH_SHORT).show()
-    }
-
-    @UiThread
-    override fun hideRefreshProgress() {
-        ui.hideRefreshProgress()
     }
 
     @UiThread

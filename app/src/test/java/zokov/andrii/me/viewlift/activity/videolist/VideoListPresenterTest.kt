@@ -69,17 +69,6 @@ class VideoListPresenterTest {
     }
 
     @Test
-    fun refreshVideoItems_fetchContentItemsShouldBeCalled() {
-        // before
-        whenever(applicationRemoteDataSource.fetchContentItems())
-            .thenReturn(Single.just(ArrayList()))
-        // when
-        videoListPresenter.refreshVideoItems()
-        // then
-        verify(applicationRemoteDataSource, times(1)).fetchContentItems()
-    }
-
-    @Test
     fun fetchContentItems_returnEmptyList_showNoVideoItemsFoundTrueOnViewShouldBeCalled() {
         // before
         whenever(applicationRemoteDataSource.fetchContentItems())
@@ -127,17 +116,6 @@ class VideoListPresenterTest {
             videoItems.size,
             `is`(videoListPresenter.videoItems.filter { it.id != null }.distinctBy { it.id }.size)
         )
-    }
-
-    @Test
-    fun fetchContentItems_shouldHideRefreshProgress() {
-        // before
-        whenever(applicationRemoteDataSource.fetchContentItems())
-            .thenReturn(Single.just(ArrayList()))
-        // when
-        videoListPresenter.fetchContentItems()
-        // then
-        verify(view, times(1)).hideRefreshProgress()
     }
 
     @Test
@@ -210,7 +188,7 @@ class VideoListPresenterTest {
     }
 
     @Test
-    fun hasNoDefaultMediaPlayer_shouldShowDefaultVideoPlayerNotAvailableErrorMessage(){
+    fun hasNoDefaultMediaPlayer_shouldShowDefaultVideoPlayerNotAvailableErrorMessage() {
         // when
         videoListPresenter.hasNoDefaultMediaPlayer()
         // then

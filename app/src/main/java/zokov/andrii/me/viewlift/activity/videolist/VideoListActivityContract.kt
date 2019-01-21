@@ -14,8 +14,6 @@ interface VideoListActivityContract {
         @UiThread
         fun showNoVideoItemsFound(show: Boolean)
         @UiThread
-        fun hideRefreshProgress()
-        @UiThread
         fun showServerError()
         @UiThread
         fun showVideoIsNotAvailable()
@@ -25,7 +23,6 @@ interface VideoListActivityContract {
 
     interface Presenter : IBasePresenter {
         fun itemSelected(id: Long)
-        fun refreshVideoItems()
         fun hasNoDefaultMediaPlayer()
     }
 }
