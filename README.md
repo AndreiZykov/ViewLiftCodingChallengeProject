@@ -7,5 +7,3 @@ When the user clicks the thumbnail, use the default player and play the video. U
 url:http://sample-firetv-web-app.s3-website-us-west-2.amazonaws.com/feed_firetv.xml
 ```
 
-#### from Andrii:
-I don't really understand if "tray of videos" has a specific meaning, so I made it as a vertical list like "youtube"
